@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" href="/static/addnew.css">
+     <link rel="stylesheet" href="/static/table.css">
+
+</head>
+
+<script>
+
+
+      function goBack() {
+        window.history.back();
+      }
+
+
+</script>
+
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+
+<table id="customers">
+<tr>
+    <th>branch</th>
+        <th>seats</th>
+
+        <th>cutoff</th>
+
+        <th>fees</th>
+
+        <th>action</th>
+
+</tr>
+    {% for i in bdata %}
+    <form method="POST" action="">
+
+
+        <tr>
+
+            <td ><input type="text" value="{{i[0] }}" name="dep"  ></td>
+            <td ><input type="number" value="{{i[1] }}" name="seats" ></td>
+            <td ><input type="number" value="{{i[2] }}" name="cut_off" ></td>
+             <td ><input type="number" value="{{i[3] }}" name="fees" ></td>
+             <td><button name="submit" value="1" type="submit">update</button></td>
+
+        </tr>
+        <br>
+               </form>
+
+
+    {% endfor %}
+  </table>
+
+<button class="open-button" onclick="openForm()">add branch</button>
+
+<div class="form-popup" id="myForm">
+  <form action="" class="form-container" method="POST">
+
+
+    <label ><b>branch</b></label>
+    <input type="text" placeholder="Branch name" name="bname" required>
+
+    <label ><b>seats</b></label>
+    <input type="number" placeholder="no of seats" name="seats" required>
+
+       <label ><b>cut off</b></label>
+    <input type="number" placeholder="cut off" name="cut_off" required>
+
+       <label ><b>fees</b></label>
+    <input type="number" placeholder="seats" name="fees" required>
+
+    <button type="submit" name="submit" class="btn" value="2">Add</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

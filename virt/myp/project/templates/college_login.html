@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/college/styless.css">
+
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+</head>
+
+<body id="for_body"  background="/static/college/clogin.jpg">
+
+  <button onclick="goBack()" style="  background-color: Transparent;
+    color: white;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+     <h1 style=" color: white;">college login</h1>
+     <br>
+
+
+
+<form action="" method="POST">
+
+  <div  style="color: white">
+  <center>
+
+  <label>{{message}}</label>
+  <br>
+  <br>
+  <input type = "number" name="coll_id" placeholder="enter college id" required>
+  <br>
+  <br>
+ <input  type="password" name="password" placeholder="password" required>
+  <br>
+  <br>
+  <button type="submit" class="button" style="margin-left:135px">Login</button>
+  <br>
+
+
+  </center>
+  </div>
+
+</form>
+</body>
+</html>

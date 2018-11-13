@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/studentlogin/styless.css">
+
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+</head>
+
+<body id="for_body"  background="/static/studentlogin/slogin.jpg">
+
+  <button onclick="goBack()" style="  background-color: Transparent;
+    color: white;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+     <h1 style=" color: white;">Student login</h1>
+     <br>
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+     <label>   {{ message }}</label>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<form action="" method="POST">
+
+  <div  style="color: white">
+<center>
+
+  <label>{{message}}</label>
+  <br>
+  <br>
+  <input type = "text" name="roll" placeholder="enter roll no" value="{{request.form.roll}}">
+  <br>
+  <br>
+ <input  type="password" name="password" placeholder="password">
+  <br>
+  <br>
+  <button type="submit" class="button" style="margin-left:135px">Login</button>
+  <br>
+  <br>
+  <a href="{{ url_for('signup') }}"> <button type="button" class="button" style="margin-left:20px">Sign up</button> </a>if not registered yet
+  <br>
+</center>
+
+  </div>
+
+</form>
+</body>
+</html>

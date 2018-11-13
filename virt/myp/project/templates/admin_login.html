@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8" /> 
+    <title>
+       Admin_login
+    </title>
+    <link rel="stylesheet" type="text/css" href="/static/adminlogin/style.css" />
+</head>
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+<body>
+
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: white;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+
+
+
+<form  method="POST" action="">
+  <h1>Admin Log in</h1>
+  <div class="inset">
+
+       <p>
+    {{message}}
+  </p>
+  <p>
+    <label >Admin id</label>
+    <input type="text" name="id" required>
+  </p>
+  <p>
+    <label >PASSWORD</label>
+    <input type="password" name="password" required>
+  </p>
+      <!--
+  <p>
+    <input type="checkbox" name="remember" id="remember">
+    <label for="remember">Remember me for 14 days</label>
+  </p>
+  -->
+  </div>
+  <p class="p-container">
+
+    <input type="submit"  value="Log in">
+  </p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{cid}}</title>
+     <link rel="stylesheet" href="/static/studentlogin/styless.css">
+</head>
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+
+}
+
+
+input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10x 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    border: 3px solid  blue;
+    padding: 15px;
+    height: 470px;
+    width: 50%;
+}
+
+
+
+</style>
+
+
+
+
+
+<body bgcolor="  #3498DB " >
+
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+
+
+{% for i in cdata %}
+<div align="center">
+
+ <form  method="POST" action="">
+
+                college id: <input type="number" name="cid" value= {{i[0]}} required disabled>
+                <br>
+                college name   :  <input type="text" name="cname" value= {{i[1]}} required disabled>
+                <br>
+                password       : <input type="password" name="password" value= {{i[2]}} required>
+                <br>
+                email          :<input type="email" name="email" value= {{i[3]}} required>
+                <br>
+                 website      : <input type="text" name="loc" value= "comming soon" required disabled>
+                <br>
+
+                location       : <input type="text" name="loc" value= {{i[4]}} required disabled>
+                <br>
+
+
+            <input type="submit" value="submit">
+
+            </form>
+</div>
+
+ {% endfor %}
+
+
+
+
+
+
+</body>
+</html>

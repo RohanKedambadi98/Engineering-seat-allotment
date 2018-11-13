@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin_main</title>
+        <link rel="stylesheet" href="/static/buttons.css">
+
+
+</head>
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+<style>
+.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 15px;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width:500px;
+    margin: 10px 2px;
+    cursor: pointer;
+    padding: 30px 100px;
+}
+
+
+.button2 {
+    background-color:  black ;
+    color: white;
+    border: 3px solid #2DEC21  ;
+}
+
+.button1:hover {
+    background-color: #2E4053  ;
+    color: white;
+}
+</style>
+<body background="/static/admin_menu.jpg">
+   <button onclick="goBack()" style="  background-color: Transparent;
+    color: white;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+   <div style="position: absolute; top: 0;right: 40px; ">
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+   </div>
+
+   <br>
+    hello admin :{{name}}
+
+<br>
+<br>
+ <a href="{{ url_for('admin_student',roll='all') }}"> <button class="button1 button2"><h1>Student</h1></button> </a>
+<br>
+<br>
+
+ <a href="{{ url_for('admin_college',cid='all') }}"> <button class="button1 button2" ><h1>College</h1></button> </a>
+<br>
+<br>
+
+    <a href="{{ url_for('admin_cetrank') }}"> <button class="button1 button2"><h1>Rank List</h1></button> </a>
+</body>
+</html>

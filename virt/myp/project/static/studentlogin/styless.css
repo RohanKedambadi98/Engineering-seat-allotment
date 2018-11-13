@@ -1,0 +1,61 @@
+
+    label{
+      font-size: 20px;
+      color: white;
+
+    }
+    p{
+      font-size: 20px;
+      color: white;
+    }
+ #quotes {
+    font-size: 50px;
+    color: white;
+  }
+
+    input{
+      width: 200px;
+      border-radius: 5px;
+      padding:8px;
+    }
+
+    h1{
+
+   margin-right: 50px;
+   text-align: center;
+   margin-left: 50px;
+    }
+.topcorner {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+    div {
+      border-radius: 15px;
+      width: 30%;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      margin-left: 100px;
+      border-radius: 20px;
+        }
+     #for_body{
+
+
+     }
+     .button:hover {
+       background-color:white ; /* Green */
+       color: blue  ;
+      }
+     .button {
+       -webkit-transition-duration: 0.4s; /* Safari */
+       transition-duration: 0.4s;
+    background-color:#1ABC9C    ; /* Green */
+
+    color:black ;
+
+    padding: 5px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */

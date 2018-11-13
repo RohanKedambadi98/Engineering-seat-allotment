@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{cid}}</title>
+         <link rel="stylesheet" href="/static/table.css">
+    <link rel="stylesheet" href="/static/buttons.css">
+
+</head>
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+<body id="for_body">
+
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+
+
+<div style="position: absolute; top: 0;right: 40px; ">
+
+
+<a href="{{ url_for('college_info',cid=cid) }}" > <button class="button button">college info</button> </a>
+
+<a href="{{ url_for('branch_info',cid=cid) }}" ><button class="button button"> branch info</button> </a>
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+</div>
+
+
+
+<div>
+ <table id="customers">
+     <tr>
+         <th>roll no</th>
+         <th>name</th>
+         <th>email</th>
+         <th>phone</th>
+         <th>rank</th>
+         <th>branch</th>
+
+     </tr>
+
+    {% for i in students %}
+
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[7]}}</td>
+
+
+        </tr>
+
+     {%endfor%}
+   </table>
+
+</div>
+</body>
+</html>

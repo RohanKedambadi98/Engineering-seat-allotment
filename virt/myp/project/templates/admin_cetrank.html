@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link rel="stylesheet" href="/static/addnew.css">
+      <link rel="stylesheet" href="/static/table.css">
+      <link rel="stylesheet" href="/static/buttons.css">
+
+
+</head>
+
+
+<script>
+
+
+      function goBack() {
+        window.history.back();
+      }
+
+
+    function edit(el) {
+  el.childNodes[0].removeAttribute("disabled");
+  el.childNodes[0].focus();
+  window.getSelection().removeAllRanges();
+}
+function disable(el) {
+  el.setAttribute("disabled","");
+}
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+
+</script>
+
+
+
+
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+
+<div style="position: absolute; top: 0;right: 40px; ">
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+   </div>
+
+
+<br>
+<br>
+<br>
+<div>
+
+   <table id="customers">
+       <tr>
+    <th>roll</th>
+    <th>name</th>
+      <th>rank</th>
+      <th>Action</th>
+
+
+  </tr>
+    {% for i in data %}
+
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+<td><a href="{{ url_for('delete',what='rank',id=i[0]) }}"> <button >delete</button> </a></td>
+        </tr>
+
+     {%endfor%}
+   </table>
+
+</div>
+
+
+<button class="open-button" onclick="openForm()">add +</button>
+<div class="form-popup" id="myForm">
+  <form action="" class="form-container" method="POST">
+
+
+    <label ><b>roll no</b></label>
+    <input type="text" placeholder="enrtr roll no" name="roll" required>
+
+    <label ><b>name</b></label>
+    <input type="text" placeholder="Enter name" name="sname" required>
+
+       <label ><b>rank</b></label>
+    <input type="text" placeholder="Rank" name="rank" required>
+
+
+
+    <button type="submit" name="submit" class="btn" value="2">Add</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+</body>
+</html>

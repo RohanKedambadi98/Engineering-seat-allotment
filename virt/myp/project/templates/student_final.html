@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student_final</title>
+</head>
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+
+
+     {% if roll %}
+
+   {{roll}} has joined college :{{cid}} to the branch:{{bname}}
+    {% else %}
+    {{new_roll}}    {{message}}
+    {% endif%}
+
+</body>
+</html>

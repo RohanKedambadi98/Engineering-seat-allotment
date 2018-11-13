@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>MAIN_PaGE</title>
+     <link rel="stylesheet" href="/static/main/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	 <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+	<style>
+
+
+	</style>
+</head>
+<body  bgcolor="#F2F5F7  ">
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
+
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/cs1.jpg" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/rohan12.jpg" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/rohan_ec.jpg" style="width:100%">
+
+</div>
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/cv.jpg" style="width:100%">
+
+</div>
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/infosci.jpg" style="width:100%">
+
+</div>
+  <div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="/static/main/mech1.jpg" style="width:100%">
+
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br>
+<div>
+	<a href="{{ url_for('slogin') }}"> <button ><img class="option" src="/static/student.jpg"  width="400" height="150"></button> </a>
+<br>
+<br>
+    <a href="{{ url_for('college_login') }}"><button type="button"><img class="option" src="/static/college.jpg"  width="400" height="150"></button></button> </a>
+<br><br>
+<a href="{{ url_for('admin_login') }}"><button type="button"><img class="option" src="/static/admin.jpg"  width="400" height="150"></button></button> </a>
+</div>
+
+<div style="position: absolute;
+            top: 480px;
+            right: 40px;
+              ">
+    <img src="/static/Quotes.jpg"  width="400" height="500" style=" border-radius: 0%;">
+
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>

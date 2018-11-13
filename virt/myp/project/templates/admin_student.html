@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="/static/table.css">
+     <link rel="stylesheet" href="/static/buttons.css">
+     <link rel="stylesheet" href="/static/form.css">
+
+
+</head>
+
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+{{roll}}
+
+<form method="POST" action="" class="form-inline">
+    <label>  roll no: </label> <input type="text" name="roll" value="{{roll}}"  />
+  <br>
+
+    <button type="submit">Search</button>
+</form>
+
+
+<div style="position: absolute; top: 0;right: 40px; ">
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+   </div>
+<br>
+<br>
+<br>
+<div>
+   <table id="customers">
+
+         <tr>
+            <th>Roll no</th>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Phone</th>
+             <th>Rank</th>
+             <th>College id</th>
+             <th>Branch</th>
+             <th>Update</th>
+             <th>Delete</th>
+        </tr>
+
+
+    {% for i in result %}
+
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+            <td><a href="{{ url_for('student_update',roll=i[0]) }}"> <button >update</button> </a></td>
+            <td><a href="{{ url_for('delete',what='student',id=i[0]) }}"> <button >delete</button> </a></td>
+        </tr>
+
+     {%endfor%}
+   </table>
+</div>
+</body>
+</html>

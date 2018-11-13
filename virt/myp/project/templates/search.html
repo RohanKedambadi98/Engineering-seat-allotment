@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if user %}
+      <title>Profile of {{ username }}</title>
+    {% else %}
+     <title>No User Found</title>
+    {% endif %}
+
+    <link rel="stylesheet" href="/static/table.css">
+    <link rel="stylesheet" href="/static/buttons.css">
+    <link rel="stylesheet" href="/static/form.css">
+ <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+</head>
+
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<br>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
+welcome {{session.username}}
+<div>
+<form method="POST" action="" class="form-inline">
+    <label>   branch  </label>
+    <input type="text" name="branch" value="{{branch}}" />
+  <br>
+ <label>   location   </label>
+    <input type="text" name="loc" value="{{loc}}" />
+  <br>
+
+     <button type="submit">Submit</button>
+
+
+
+    </form>
+
+</div>
+<div style="position: absolute; top: 0;right: 40px; ">
+
+ <a href="{{ url_for('student_update',roll=roll) }}"> <button class="button button">update my profile</button> </a>
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+</div>
+
+
+
+
+    <br>
+<div>
+    <table id="customers">
+        <tr>
+            <th>college id</th>
+             <th>name</th>
+             <th>branch</th>
+             <th>place</th>
+             <th>cut off</th>
+             <th>fees</th>
+             <th>seats available</th>
+             <th>Action</th>
+        </tr>
+
+    {% for i in college %}
+
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+
+            <td><a href="{{ url_for('student_final',cid=i[0],bname=i[2],roll=roll) }}"> join</a></td>
+        </tr>
+
+     {%endfor%}
+
+    </table>
+
+</div>
+
+
+
+<br><br><br>
+
+</body>
+</html>
