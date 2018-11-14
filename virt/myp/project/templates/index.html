@@ -10,11 +10,13 @@
       function goBack() {
         window.history.back();
       }
+
+
       </script>
 
 </head>
 
-<body id="for_body"  background="/static/studentlogin/slogin.jpg">
+<body id="for_body"  background="/static/studentlogin/slogin.jpg" >
 
   <button onclick="goBack()" style="  background-color: Transparent;
     color: white;
@@ -40,13 +42,13 @@
 
 <form action="" method="POST">
 
-  <div  style="color: white">
+  <div  style="color: white" >
 <center>
 
   <label>{{message}}</label>
   <br>
   <br>
-  <input type = "text" name="roll" placeholder="enter roll no" value="{{request.form.roll}}">
+  <input type = "text" name="roll" id="roll" placeholder="enter roll no" value="{{request.form.roll}}" autofocus="autofocus">
   <br>
   <br>
  <input  type="password" name="password" placeholder="password">

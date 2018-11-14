@@ -27,7 +27,15 @@
        &laquo;
      </button>
 <br>
-
+<br>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
 
 <div style="position: absolute; top: 0;right: 40px; ">
 

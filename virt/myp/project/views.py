@@ -31,7 +31,7 @@ def is_logged_in(f):
         if 'logged_in' in session:
             return f(*args,**kwargs)
         else:
-            flash('unothorized, please login and proceed','danger')
+            flash('unouthorized, please login and proceed','danger')
             return redirect(url_for('index'))
     return wrap
 
@@ -96,28 +96,28 @@ def signup():
         rank=int(signupdetails['rank'])
         #print(signupdetails)
         print(rollno,name,password,email,phno,email,rank)
-        try:
-            cursor.execute("select roll_no,sname,rank from cet_rank where roll_no=%s;", rollno)
-            data = cursor.fetchall()
-            drollno = str(data[0][0])
-            dsname = str(data[0][1])
-            drank = int(data[0][2])
-            print(drollno, dsname, drank)
-            print(rollno, name, rank)
-            t = (rollno, name, password, email, phno, rank)
-            if rollno == drollno and name == dsname and rank == drank:
-                cursor.execute("insert into student(roll_no,sname,pass,email,phno,rank) values(%s,%s,%s,%s,%s,%s);",
-                               (rollno, name, password, email, phno, rank))
-                conn.commit()
-                session['logged_in'] = True
-                session['username'] = drollno
-                flash('sign up seccussfull', 'success')
-                return redirect(url_for('/search_college/', roll=rollno, branch='all', loc='all'))
-            else:
-                return 'info sari illa'
-        except:
+
+        cursor.execute("select roll_no,sname,rank from cet_rank where roll_no=%s;", rollno)
+        data = cursor.fetchall()
+        drollno = str(data[0][0])
+        dsname = str(data[0][1])
+        drank = int(data[0][2])
+        print(drollno, dsname, drank)
+        print(rollno, name, rank)
+        t = (rollno, name, password, email, phno, rank)
+        if rollno == drollno and name == dsname and rank == drank:
+            cursor.execute("insert into student(roll_no,sname,pass,email,phno,rank) values(%s,%s,%s,%s,%s,%s);",
+                           (rollno, name, password, email, phno, rank))
+            conn.commit()
+            session['logged_in'] = True
+            session['username'] = drollno
+            flash('sign up seccussfull', 'success')
+            return redirect(url_for('search_college', roll=rollno, branch='all', loc='all'))
+        else:
+            return 'info sari illa'
+        """except:
             message = 'invalid information'
-            return render_template('signup.html', message=message)
+            return render_template('signup.html', message=message)"""
     message='login with your user name and password'
     return render_template('signup.html',message=message)
 
@@ -139,20 +139,20 @@ def search_college(roll,branch,loc):
         rank = rank[0]
         if branch=='all' and loc=='all':
             print("yup")
-            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b 
+            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
                                     where b.cutoff>=%s and c.cid=b.cid;""",
                            rank)
         elif branch=='all':
-            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b 
+            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
             where b.cutoff>=%s and c.cid=b.cid and c.loc=%s;""",
                            (rank,loc))
         elif loc=='all':
-            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b 
+            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
                         where b.cutoff>=%s and c.cid=b.cid and b.bname=%s;""",
                            (rank, branch))
 
         else:
-            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b 
+            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
                                                 where b.cutoff>=%s and b.bname=%s and c.loc=%s and c.cid=b.cid;""",
                            (rank,branch,loc))
         college=cursor.fetchall()
@@ -163,7 +163,7 @@ def search_college(roll,branch,loc):
     rank=cursor.fetchone()
     print(rank)
     rank=rank[0]
-    cursor.execute('select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b where b.cutoff>=%s and c.cid=b.cid;',rank)
+    cursor.execute('select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats,c.website ,c.phone from college c,branch b where b.cutoff>=%s and c.cid=b.cid;',rank)
     college=cursor.fetchall()
     return render_template('search.html',roll=roll,rank=rank,college=college,branch=branch,loc=loc)
 
@@ -273,11 +273,14 @@ def college_main(cid):
 def college_info(cid):
     if request.method=='POST':
         update_details=request.form
-        form_no = int(update_details['submit'])
+        #form_no = int(update_details['submit'])
         password = update_details['password']
-        email = update_details['email']
-        cursor.execute('update college set cpass=%s,cemail=%s where cid=%s',
-                       (password, email, cid))
+
+        phone=update_details['phone']
+        website=update_details['website']
+        cursor.execute('update college set cpass=%s,website=%s,phone=%s where cid=%s',
+                       (password,website,phone,cid))
+
         conn.commit()
     cursor.execute('select * from college where cid=%s;',cid)
     college_data=cursor.fetchall()
@@ -308,13 +311,19 @@ def branch_info(cid):
             seats = int(update_details['seats'])
             cut_off = int(update_details['cut_off'])
             fees=int(update_details['fees'])
-            cursor.execute('insert into branch(cid,bname,seats,cutoff,fees) values(%s,%s,%s,%s,%s)',
-                           (cid,bname,seats,cut_off,fees))
-            conn.commit()
 
-            print(cid,bname,seats,cut_off,fees,cid)
-            return redirect(url_for('branch_info', cid=cid))
+            cursor.execute('select bname from branch where cid=%s and bname=%s;',(cid,bname))
+            exists=cursor.fetchall()
+            if exists:
+                flash('The branch already exists','danger')
+                return redirect(url_for('branch_info', cid=cid))
+            else:
+                cursor.execute('insert into branch(cid,bname,seats,cutoff,fees) values(%s,%s,%s,%s,%s)',
+                               (cid, bname, seats, cut_off, fees))
+                conn.commit()
 
+                print(cid, bname, seats, cut_off, fees, cid)
+                return redirect(url_for('branch_info', cid=cid))
 
     cursor.execute('select bname,seats,cutoff,fees from branch where cid=%s;', cid)
     branch_data = cursor.fetchall()
@@ -432,9 +441,21 @@ def admin_cetrank():
         roll=new_entry['roll']
         name=new_entry['sname']
         rank=new_entry['rank']
-        cursor.execute("insert into cet_rank(roll_no,sname,rank) values(%s,%s,%s);",(roll,name,rank))
-        conn.commit()
-        return redirect(url_for('admin_cetrank'))
+        cursor.execute('select roll_no from cet_rank where roll_no=%s;',roll)
+        exists=cursor.fetchall()
+        if exists:
+            flash('The entry already exists',"danger")
+            return redirect(url_for('admin_cetrank'))
+        else:
+            cursor.execute('select roll_no from cet_rank where rank=%s;', rank)
+            exists = cursor.fetchall()
+            if exists:
+                flash("A student with given rank already exists","danger")
+                return redirect(url_for('admin_cetrank'))
+            else:
+                cursor.execute("insert into cet_rank(roll_no,sname,rank) values(%s,%s,%s);", (roll, name, rank))
+                conn.commit()
+                return redirect(url_for('admin_cetrank'))
     cursor.execute("select * from cet_rank;")
     data=cursor.fetchall()
     return render_template('admin_cetrank.html',data=data)

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>update</title>
+        <link rel="stylesheet" href="/static/buttons.css">
+
 
 </head>
 
@@ -34,7 +36,7 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-div {
+.form {
     margin-left: auto;
     margin-right: auto;
 
@@ -68,7 +70,22 @@ div {
      </button>
 <br>
 
-<div align="center">
+
+
+
+<div style="position: absolute; top: 0;right: 40px; ">
+
+
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+</div>
+
+
+
+
+
+<div align="center" class="form">
  <form  method="POST" action="">
 <label>Roll no:</label>
      <input type="text" name="rollno" value={{roll}} required disabled>

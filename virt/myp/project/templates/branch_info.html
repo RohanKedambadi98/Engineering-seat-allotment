@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-        <link rel="stylesheet" href="/static/addnew.css">
+     <link rel="stylesheet" href="/static/addnew.css">
      <link rel="stylesheet" href="/static/table.css">
+     <link rel="stylesheet" href="/static/buttons.css">
+
 
 </head>
 
@@ -14,6 +16,22 @@
       function goBack() {
         window.history.back();
       }
+          function edit(el) {
+  el.childNodes[0].removeAttribute("disabled");
+  el.childNodes[0].focus();
+  window.getSelection().removeAllRanges();
+}
+function disable(el) {
+  el.setAttribute("disabled","");
+}
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
 
 
 </script>
@@ -30,7 +48,25 @@
       ">
        &laquo;
      </button>
+
+<div style="position: absolute; top: 0;right: 40px; ">
+
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+</div>
+
+
+
 <br>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
+
 
 <table id="customers">
 <tr>

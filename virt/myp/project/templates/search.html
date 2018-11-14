@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/table.css">
     <link rel="stylesheet" href="/static/buttons.css">
     <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="/static/dropdown.css">
+
  <script>
       function goBack() {
         window.history.back();
@@ -57,9 +59,13 @@ welcome {{session.username}}
 </div>
 <div style="position: absolute; top: 0;right: 40px; ">
 
- <a href="{{ url_for('student_update',roll=roll) }}"> <button class="button button">update my profile</button> </a>
+    <a href="{{ url_for('student_update',roll=roll) }}"> <button class="button button">update my profile</button> </a>
 
     <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+
+    <a href=" {{ url_for('index') }}" > <button class="button button">Home</button> </a>
+
+
 
 </div>
 
@@ -70,13 +76,15 @@ welcome {{session.username}}
 <div>
     <table id="customers">
         <tr>
-            <th>college id</th>
+
              <th>name</th>
              <th>branch</th>
              <th>place</th>
              <th>cut off</th>
              <th>fees</th>
              <th>seats available</th>
+             <th>contact</th>
+             <th>website</th>
              <th>Action</th>
         </tr>
 
@@ -89,7 +97,16 @@ welcome {{session.username}}
             <td>{{i[3]}}</td>
             <td>{{i[4]}}</td>
             <td>{{i[5]}}</td>
-            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+
+            {% if i[6] %}
+       <td>   <a href="{{i[6]}}" target="_blank">open</a>   </td>
+            {% else %}
+                   <td>   {{i[6]}}   </td>
+            {% endif %}
+
+
+
 
             <td><a href="{{ url_for('student_final',cid=i[0],bname=i[2],roll=roll) }}"> join</a></td>
         </tr>
@@ -103,6 +120,8 @@ welcome {{session.username}}
 
 
 <br><br><br>
+
+
 
 </body>
 </html>
