@@ -93,19 +93,19 @@ input[type=submit]:hover {
 
  <form  method="POST" action="">
 
-                college id: <input type="number" name="cid" value= {{i[0]}} required disabled>
+                college id: <input type="number" name="cid" value= {{i[0]}}  required disabled>
                 <br>
                 college name   :  <input type="text" name="cname" value= {{i[1]}} required disabled>
                 <br>
-                password       : <input type="password" name="password" value= {{i[2]}} required>
+                password       : <input type="password" name="password" value= {{i[2]}} minlength="5" maxlength="10" required>
                 <br>
-                website        :<input type="text" name="website" value= {{i[3]}} required>
+                website        :<input type="text" name="website" value= {{i[3]}} maxlength="100" >
                 <br>
 
                 phone          : <input type="text" name="phone" value= "{{i[6]}}" required maxlength="10" minlength="10" pattern="[7-9]{1}[0-9]{9}">
                 <br>
 
-                 location      : <input type="text" name="loc" value= {{i[4]}} required disabled>
+                 location      : <input type="text" name="loc" value= {{i[4]}} maxlength="40" required disabled>
                 <br>
 
 

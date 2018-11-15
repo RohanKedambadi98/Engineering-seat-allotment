@@ -48,10 +48,10 @@
   <label>{{message}}</label>
   <br>
   <br>
-  <input type = "text" name="roll" id="roll" placeholder="enter roll no" value="{{request.form.roll}}" autofocus="autofocus">
+  <input type = "text" name="roll" id="roll" placeholder="enter roll no" value="{{request.form.roll}}"  minlength="5" autofocus="autofocus">
   <br>
   <br>
- <input  type="password" name="password" placeholder="password">
+ <input  type="password" name="password" placeholder="password" minlength="5" maxlength="10">
   <br>
   <br>
   <button type="submit" class="button" style="margin-left:135px">Login</button>

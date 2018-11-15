@@ -88,19 +88,19 @@ input[type=submit]:hover {
 <div align="center" class="form">
  <form  method="POST" action="">
 <label>Roll no:</label>
-     <input type="text" name="rollno" value={{roll}} required disabled>
+     <input type="text" name="rollno" value={{roll}} required maxlength="5" minlength="5" disabled>
                 <br><br>
      <label>Name:</label>
-                <input type="text" name="name" value={{sname}} required disabled>
+                <input type="text" name="name" value={{sname}} required maxlength="45" disabled>
                 <br><br>
      <label>Password:</label>
-                <input type="password" name="password" value={{password}} required>
+                <input type="password" name="password" value={{password}} minlength="5" maxlength="10"  required>
                 <br><br>
      <label>Email:</label>
-                <input type="email" name="email" value={{email}} required>
+                <input type="email" name="email" value={{email}} maxlength="45" required>
                 <br><br>
      <label>phone no:</label>
-                <input type="number" name="phno" value={{phno}} required>
+                <input type="number" name="phno" value={{phno}} maxlength="10" minlength="10" pattern="[7-9]{1}[0-9]{9}" required>
                 <br><br>
     <input type="submit" value="submit">
 

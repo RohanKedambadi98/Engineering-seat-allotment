@@ -112,17 +112,22 @@ admin college
 <div class="form-popup" id="myForm">
   <form action="" class="form-container" method="POST">
 
-    <label ><b>name</b></label>
-    <input type="text" placeholder="enter name" name="cname" required>
+    <label ><b>Name</b></label>
+    <input type="text" placeholder="enter name" name="cname" maxlength="40" required>
 
-    <label ><b>password</b></label>
-    <input type="password" placeholder="password" name="password" required>
+    <label ><b>Password</b></label>
+    <input type="password" placeholder="password" name="password" minlength="5" maxlength="10" required>
 
-       <label ><b>Email</b></label>
-    <input type="email"  placeholder="enter email id" name="email" required>
+          <label ><b>  phone </b></label>
+      <input type="number" name="phone"  required maxlength="10" minlength="10" pattern="[7-9]{1}[0-9]{9}">
 
-       <label ><b>place</b></label>
-    <input type="text" placeholder="enter the place" name="loc" required>
+
+      <label ><b>Website </b></label>
+      <input type="text" name="website" placeholder="College website link"  maxlength="100" >
+                <br>
+
+       <label ><b>Place</b></label>
+    <input type="text" placeholder="enter the place" name="loc" maxlength="40" required>
 
     <button type="submit" name="submit" class="btn" value="2" >Add</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>

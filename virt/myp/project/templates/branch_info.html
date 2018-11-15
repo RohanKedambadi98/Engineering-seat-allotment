@@ -87,9 +87,9 @@ function closeForm() {
         <tr>
 
             <td ><input type="text" value="{{i[0] }}" name="dep"  ></td>
-            <td ><input type="number" value="{{i[1] }}" name="seats" ></td>
-            <td ><input type="number" value="{{i[2] }}" name="cut_off" ></td>
-             <td ><input type="number" value="{{i[3] }}" name="fees" ></td>
+            <td ><input type="number" value="{{i[1] }}" name="seats" min="0" ></td>
+            <td ><input type="number" value="{{i[2] }}" name="cut_off" min="0"></td>
+             <td ><input type="number" value="{{i[3] }}" name="fees" min="0"></td>
              <td><button name="submit" value="1" type="submit">update</button></td>
 
         </tr>
@@ -107,7 +107,7 @@ function closeForm() {
 
 
     <label ><b>branch</b></label>
-    <input type="text" placeholder="Branch name" name="bname" required>
+    <input type="text" placeholder="Branch name" name="bname" maxlength="45" required>
 
     <label ><b>seats</b></label>
     <input type="number" placeholder="no of seats" name="seats" required>

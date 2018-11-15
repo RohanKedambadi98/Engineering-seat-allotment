@@ -42,17 +42,17 @@ function goBack() {
             <form  method="POST" action="">
                 <label>{{message}}</label>
                 <br>
-                <input type="text" name="rollno" placeholder="rollno" value="{{request.form.rollno}}" required>
+                <input type="text" name="rollno" placeholder="rollno" value="{{request.form.rollno}}" maxlength="5" minlength="5" required>
                 <br><br>
-                <input type="text" name="name" placeholder="your name" value="{{request.form.name}}" required>
+                <input type="text" name="name" placeholder="your name" value="{{request.form.name}}" maxlength="45" required>
                 <br><br>
-                <input type="password" name="password" placeholder="password" value="{{request.form.password}}" required>
+                <input type="password" name="password" placeholder="password" value="{{request.form.password}}" minlength="5" maxlength="10" required>
                 <br><br>
-                <input type="email" name="email" placeholder="Email" value="{{request.form.email}}" required>
+                <input type="email" name="email" placeholder="Email" value="{{request.form.email}}" maxlength="45" required>
                 <br><br>
-                <input type="number" name="phno" placeholder="phone no" value="{{request.form.phno}}" required>
+                <input type="number" name="phno" placeholder="phone no" value="{{request.form.phno}}" minlength="10" maxlength="10" pattern="[7-9]{1}[0-9]{9}" required>
                 <br><br>
-                <input type="number" name="rank" placeholder="your rank" value="{{request.form.rank}}" required>
+                <input type="number" name="rank" placeholder="your rank" value="{{request.form.rank}}" minlength="0" required>
                 <br><br>
             <button type="submit" class="button">  sign up </button>
             </form>
