@@ -32,6 +32,9 @@
        &laquo;
      </button>
 <br>
+<h1 align="center">College(s) Available</h1>
+
+
 {% with messages = get_flashed_messages() %}
    {% if messages %}
       {% for message in messages %}
@@ -62,13 +65,10 @@ welcome {{session.username}}
     <a href="{{ url_for('student_update',roll=roll) }}"> <button class="button button">update my profile</button> </a>
 
     <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
-
-    <a href=" {{ url_for('index') }}" > <button class="button button">Home</button> </a>
-
+    <a href="{{ url_for('my_college',roll=roll) }}"> <button class="button button">My college</button> </a>
 
 
 </div>
-
 
 
 
@@ -76,15 +76,15 @@ welcome {{session.username}}
 <div>
     <table id="customers">
         <tr>
-
+            <th>college id</th>
              <th>name</th>
              <th>branch</th>
              <th>place</th>
              <th>cut off</th>
              <th>fees</th>
              <th>seats available</th>
-             <th>contact</th>
              <th>website</th>
+             <th>contact</th>
              <th>Action</th>
         </tr>
 
@@ -97,13 +97,15 @@ welcome {{session.username}}
             <td>{{i[3]}}</td>
             <td>{{i[4]}}</td>
             <td>{{i[5]}}</td>
-            <td>{{i[7]}}</td>
-
-            {% if i[6] %}
-       <td>   <a href="{{i[6]}}" target="_blank">open</a>   </td>
+            <td>{{i[6]}}</td>
+                 {% if i[6] %}
+       <td>   <a href="{{i[7]}}" target="_blank">open</a>   </td>
             {% else %}
-                   <td>   {{i[6]}}   </td>
+                   <td>   {{i[7]}}   </td>
             {% endif %}
+
+            <td>{{i[8]}}</td>
+
 
 
 

@@ -53,29 +53,30 @@
        &laquo;
      </button>
 
+   <h1 align="center" style="color:white">Admin Main</h1>
+
+
 <br>
 {% with messages = get_flashed_messages() %}
    {% if messages %}
       {% for message in messages %}
-         {{ message }}
+   <p style="color:white;">   {{ message }}  </p>
       {% endfor %}
    {% endif %}
 {% endwith %}
 <br>
 
-
    <div style="position: absolute; top: 0;right: 40px; ">
 
-     href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
+    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
 
    </div>
+   <h3  style="color:white">hello {{name}}</h3>
 
-   <br>
-    hello admin :{{name}}
+
 
 <br>
-<br>
- <a href="{{ url_for('admin_student',roll='all',id=id) }}"> <button class="button1 button2"><h1>Student</h1></button> </a>
+ <a href="{{ url_for('admin_student',roll='all',id=id,) }}"> <button class="button1 button2"><h1>Student</h1></button> </a>
 <br>
 <br>
 

@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{cid}}</title>
+    <title>Title</title>
          <link rel="stylesheet" href="/static/table.css">
-    <link rel="stylesheet" href="/static/buttons.css">
-
 </head>
  <script>
       function goBack() {
         window.history.back();
       }
       </script>
-
-<body id="for_body">
+<body>
 
 <button onclick="goBack()" style="  background-color: Transparent;
     color: blue;
@@ -26,31 +23,7 @@
       ">
        &laquo;
      </button>
-<h1 align="center">List of enrolled student(s)</h1>
-
-
-<br>
-<br>
-{% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-         {{ message }}
-      {% endfor %}
-   {% endif %}
-{% endwith %}
-<br>
-
-<div style="position: absolute; top: 0;right: 40px; ">
-
-
-<a href="{{ url_for('college_info',cid=cid) }}" > <button class="button button">college info</button> </a>
-
-<a href="{{ url_for('branch_info',cid=cid) }}" ><button class="button button"> branch info</button> </a>
-
-    <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>
-
-</div>
-
+<h1 align="center">Students List</h1>
 
 
 <div>
@@ -82,5 +55,7 @@
    </table>
 
 </div>
+
+
 </body>
 </html>

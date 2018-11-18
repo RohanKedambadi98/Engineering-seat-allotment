@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/virt/myp/project/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-917">
-              <caret line="429" column="24" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
+            <state relative-caret-position="10030">
+              <caret line="599" column="21" lean-forward="true" selection-start-line="599" selection-start-column="21" selection-end-line="599" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -23,41 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_main.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_main.html">
+      <file leaf-file-name="admin_cetrank.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_cetrank.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="branch_info.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/branch_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-372">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hacker.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/hacker.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="1003">
+              <caret line="67" column="46" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -71,29 +41,39 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_student.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/college_main.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/Main.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/search.html" />
         <option value="$PROJECT_DIR$/virt/myp/run.py" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_cetrank.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/signup.html" />
         <option value="$PROJECT_DIR$/virt/myp/project/templates/college_login.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/index.html" />
         <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_login.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/college_info.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_college.html" />
         <option value="$PROJECT_DIR$/virt/myp/project/templates/student_update.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_main.html" />
-        <option value="$PROJECT_DIR$/virt/myp/project/views.py" />
         <option value="$PROJECT_DIR$/virt/myp/project/templates/hacker.html" />
         <option value="$PROJECT_DIR$/virt/myp/project/templates/branch_info.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_student.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/college_main.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_main.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_college_list.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_college.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/search.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/my_college.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/college_info.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/my_college.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/Main.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/signup.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/index.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/rohan.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/question.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/templates/admin_cetrank.html" />
+        <option value="$PROJECT_DIR$/virt/myp/project/views.py" />
       </list>
     </option>
   </component>
@@ -107,7 +87,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -153,12 +132,18 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Git-2.19.1-64-bit.exe" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rohan kedambadi\Documents\GitHub\project1\virt\myp\project\templates" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -237,12 +222,12 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29166666" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22544643" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32972136" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32352942" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.50619197" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -253,7 +238,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3343799" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -279,48 +264,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="123" selection-start-line="123" selection-end-line="123" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
@@ -335,10 +278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
           <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -506,13 +445,6 @@
     <entry file="file://$PROJECT_DIR$/virt/myp/project/exp.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_student.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="56" column="22" lean-forward="true" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/static/addnew.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1230" />
@@ -521,39 +453,13 @@
     <entry file="file://$PROJECT_DIR$/virt/myp/project/static/addnew.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/student_final.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/college_students.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/college_main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="48" column="6" lean-forward="true" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/Main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="48" column="125" selection-start-line="48" selection-start-column="125" selection-end-line="48" selection-end-column="125" />
         </state>
       </provider>
     </entry>
@@ -571,38 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_cetrank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/college_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_college.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="121" column="40" selection-start-line="121" selection-start-column="40" selection-end-line="121" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/student_update.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -612,42 +486,131 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/hacker.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-917">
-          <caret line="429" column="24" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+        <state relative-caret-position="68">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/branch_info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="1377">
           <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_student.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/college_main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/my_college.html" />
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/college_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/my_college.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="104" column="11" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="58" column="139" selection-start-line="58" selection-start-column="139" selection-end-line="58" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/Main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="89" column="6" lean-forward="true" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/rohan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/student_final.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-519">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_college_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_college.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/templates/admin_cetrank.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="67" column="46" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virt/myp/project/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10030">
+          <caret line="599" column="21" lean-forward="true" selection-start-line="599" selection-start-column="21" selection-end-line="599" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

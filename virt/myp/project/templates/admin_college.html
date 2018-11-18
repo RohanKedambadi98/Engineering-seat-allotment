@@ -81,6 +81,7 @@ admin college
              <th>seats left</th>
              <th>college info</th>
              <th>branch info</th>
+             <th>Students list</th>
          <th>delete</th>
         </tr>
 
@@ -95,8 +96,9 @@ admin college
 
             <td><a href="{{ url_for('college_info',cid=i[0]) }}"> <button >update</button> </a></td>
             <td><a href="{{ url_for('branch_info',cid=i[0]) }}"> <button >update seats</button> </a></td>
+            <td><a href="{{ url_for('admin_college_list',cid=i[0]) }}"> <button >View</button> </a></td>
 
-           <td><a href="{{ url_for('delete',what='college',id=i[0]) }}"> <button >delete</button> </a></td>
+           <td><a href="{{ url_for('delete',what='college',did=i[0],id=id) }}"> <button >delete</button> </a></td>
         </tr>
 
      {%endfor%}

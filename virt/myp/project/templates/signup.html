@@ -54,6 +54,10 @@ function goBack() {
                 <br><br>
                 <input type="number" name="rank" placeholder="your rank" value="{{request.form.rank}}" minlength="0" required>
                 <br><br>
+                <input type="text" name="question" placeholder="enter a secret question" value="{{request.form.question}}" minlength="0" maxlength="100" required>
+                <br><br>
+                <input type="text" name="answer" placeholder="enter the answer" value="{{request.form.answer}}" minlength="0" maxlength="40" required>
+                <br><br>
             <button type="submit" class="button">  sign up </button>
             </form>
         </div>

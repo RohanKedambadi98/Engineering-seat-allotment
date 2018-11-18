@@ -75,7 +75,7 @@
             <td>{{i[6]}}</td>
             <td>{{i[7]}}</td>
             <td><a href="{{ url_for('student_update',roll=i[0]) }}"> <button >update</button> </a></td>
-            <td><a href="{{ url_for('delete',what='student',id=i[0]) }}"> <button >delete</button> </a></td>
+            <td><a href="{{ url_for('delete',what='student',did=i[0],id=id) }}"> <button >delete</button> </a></td>
         </tr>
 
      {%endfor%}

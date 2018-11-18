@@ -94,8 +94,10 @@ def signup():
         email=str(signupdetails['email'])
         phno=int(signupdetails['phno'])
         rank=int(signupdetails['rank'])
+        question=str(signupdetails['question'])
+        answer=str(signupdetails['answer'])
         #print(signupdetails)
-        print(rollno,name,password,email,phno,email,rank)
+        print(rollno,name,password,email,phno,email,rank,question,answer)
 
         cursor.execute("select roll_no,sname,rank from cet_rank where roll_no=%s;", rollno)
         data = cursor.fetchall()
@@ -107,8 +109,8 @@ def signup():
             print(drollno, dsname, drank)
             print(rollno, name, rank)
             if rollno == drollno and name == dsname and rank == drank:
-                cursor.execute("insert into student(roll_no,sname,pass,email,phno,rank) values(%s,%s,%s,%s,%s,%s);",
-                               (rollno, name, password, email, phno, rank))
+                cursor.execute("insert into student(roll_no,sname,pass,email,phno,rank,question,answer) values(%s,%s,%s,%s,%s,%s,%s,%s);",
+                               (rollno, name, password, email, phno, rank,question,answer))
                 conn.commit()
                 session['logged_in'] = True
                 session['username'] = drollno
@@ -139,20 +141,20 @@ def search_college(roll,branch,loc):
         rank = rank[0]
         if branch=='all' and loc=='all':
             print("yup")
-            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
+            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats,c.website,c.phone from college c,branch b 
                                     where b.cutoff>=%s and c.cid=b.cid and total_seats>0;""",
                            rank)
         elif branch=='all':
-            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
+            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats ,c.website,c.phone from college c,branch b 
             where b.cutoff>=%s and c.cid=b.cid and c.loc=%s and total_seats>0;""",
                            (rank,loc))
         elif loc=='all':
-            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
+            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats ,c.website,c.phone from college c,branch b 
                         where b.cutoff>=%s and c.cid=b.cid and b.bname=%s and total_seats>0;""",
                            (rank, branch))
 
         else:
-            cursor.execute("""select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats from college c,branch b ,c.website,c.phone
+            cursor.execute("""select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats ,c.website,c.phone from college c,branch b
                                                 where b.cutoff>=%s and b.bname=%s and c.loc=%s and c.cid=b.cid and total_seats>0;""",
                            (rank,branch,loc))
         college=cursor.fetchall()
@@ -164,7 +166,7 @@ def search_college(roll,branch,loc):
         print(rank)
         rank = rank[0]
         cursor.execute(
-            'select c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats,c.website ,c.phone from college c,branch b where b.cutoff>=%s and c.cid=b.cid and total_seats>0;',
+            'select c.cid,c.cname,b.bname,c.loc,b.cutoff,b.fees,b.seats,c.website ,c.phone from college c,branch b where b.cutoff>=%s and c.cid=b.cid and total_seats>0;',
             rank)
         college = cursor.fetchall()
         return render_template('search.html', roll=roll, rank=rank, college=college, branch=branch, loc=loc)
@@ -193,19 +195,33 @@ def student_update(roll):
         conn.commit()
         return redirect(url_for('student_update',roll=roll))
 
-    if session['username'] == roll:
-        cursor.execute('select roll_no,sname,pass,email,phno,rank from student where roll_no=%s;', roll)
-        data = cursor.fetchall()
-        sname = data[0][1]
-        password = data[0][2]
-        email = data[0][3]
-        phno = data[0][4]
-        rank = data[0][5]
-        return render_template('student_update.html', roll=roll, sname=sname, password=password, email=email, phno=phno,
-                               rank=rank)
-    else:
-        return render_template('hacker.html')
+    cursor.execute('select roll_no,sname,pass,email,phno,rank from student where roll_no=%s;', roll)
+    data = cursor.fetchall()
+    sname = data[0][1]
+    password = data[0][2]
+    email = data[0][3]
+    phno = data[0][4]
+    rank = data[0][5]
+    return render_template('student_update.html', roll=roll, sname=sname, password=password, email=email, phno=phno,
+                           rank=rank)
 
+######################################My College #################################################
+
+@app.route('/my_college/<roll>')
+def my_college(roll):
+    try:
+        cursor.execute('select cid from student where roll_no=%s;', roll)
+        cid = cursor.fetchone()
+
+        cid = cid[0]
+        cursor.execute('select cid,cname,website,loc,phone from college where cid=%s;', cid)
+        college = cursor.fetchall()
+
+        return render_template('my_college.html', cid=cid, college=college)
+    except:
+        flash("You have not joined any college.")
+
+        return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
 
 ######################################student final page ##########################################
@@ -213,25 +229,67 @@ def student_update(roll):
 @app.route('/student_final/<cid>/<bname>/<roll>')
 @is_logged_in
 def student_final(cid,bname,roll):
-    if session['username']==roll:
-        print(cid, bname, roll)
-        cursor.execute('select roll_no from student where cid is not null and roll_no=%s;', roll)
-        new_roll = cursor.fetchone()
-        if new_roll:
-            new_roll = new_roll[0]
-            message = 'You have already joined a college'
-            return render_template('student_final.html', new_roll=new_roll, message=message)
-        else:
-            cursor.execute('update student set cid=%s where roll_no=%s;', (cid, roll))
-            conn.commit()
-            cursor.execute('update student set bname=%s where roll_no=%s;', (bname, roll))
-            conn.commit()
+    print(cid, bname, roll)
+    cursor.execute('select roll_no from student where cid is not null and roll_no=%s;', roll)
+    new_roll = cursor.fetchone()
+    if new_roll:
+        new_roll = new_roll[0]
+        flash('You have already joined a college')
+        return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
-            return render_template('student_final.html', cid=cid, bname=bname, roll=roll)
     else:
-        return render_template('hacker.html')
+        cid=int(cid)
+        cursor.execute('update student set cid=%s where roll_no=%s;', (cid, roll))
+        conn.commit()
+        cursor.execute('update student set bname=%s where roll_no=%s;', (bname, roll))
+        conn.commit()
+        flash(' college joining succesfull')
+        return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
 
+#######################################forgot ###################################################
+
+@app.route('/forgot/',methods=['GET','POST'])
+def forgot():
+    if request.method == 'POST':
+        roh = request.form
+        id = roh['rol']
+        return redirect(url_for('question',id=id))
+    return render_template('rohan.html')
+
+############################################################## student forgot #######################################
+@app.route('/question/<id>',methods=['GET','POST'])
+def question(id):
+    print("qqw")
+    if request.method == 'POST':
+        forgot = request.form
+        ans = forgot['ans']
+        cursor.execute("select answer from student where roll_no=%s", id)
+
+        ans1 = cursor.fetchone()
+        ans1 = ans1[0]
+        if ans == ans1:
+            cursor.execute("select pass from student where roll_no=%s", id)
+            passs = cursor.fetchone()
+            passs = passs[0]
+            message = "your password is: " + passs
+            flash(message)
+            return redirect(url_for('slogin'))
+        else:
+            flash("the answer in incorrect")
+            return redirect(url_for('question',id=id))
+
+
+
+    cursor.execute("select question from student where roll_no=%s", id)
+
+    que = cursor.fetchone()
+    if que:
+        print("kelage")
+        return render_template('question.html', que=que)
+    else:
+        flash("the roll no does not exists")
+        return render_template('rohan.html')
 
 
 #######################################college login page #########################################
@@ -296,12 +354,11 @@ def college_info(cid):
                        (password,website,phone,cid))
 
         conn.commit()
-    if session['username'] == cid:
-        cursor.execute('select * from college where cid=%s;', cid)
-        college_data = cursor.fetchall()
-        return render_template('college_info.html', cid=cid, cdata=college_data)
-    else:
-        return render_template('hacker.html')
+
+    cursor.execute('select * from college where cid=%s;', cid)
+    college_data = cursor.fetchall()
+    return render_template('college_info.html', cid=cid, cdata=college_data)
+
 
 
 #######################################branch info#################################################
@@ -342,13 +399,12 @@ def branch_info(cid):
 
                 print(cid, bname, seats, cut_off, fees, cid)
                 return redirect(url_for('branch_info', cid=cid))
-    if session['username'] == cid:
-        cursor.execute('select bname,seats,cutoff,fees from branch where cid=%s;', cid)
-        branch_data = cursor.fetchall()
 
-        return render_template('branch_info.html', cid=cid, bdata=branch_data)
-    else:
-        return render_template('hacker.html')
+    cursor.execute('select bname,seats,cutoff,fees from branch where cid=%s;', cid)
+    branch_data = cursor.fetchall()
+
+    return render_template('branch_info.html', cid=cid, bdata=branch_data)
+
 
 
 
@@ -374,7 +430,7 @@ def admin_login():
                 message = 'incorrect password!!!'
                 return render_template('admin_login.html', message=message)
         except:
-            message = 'invalid admin name or password.'
+            message = 'invalid admin name'
             return render_template('admin_login.html',message=message,id=id)
     message='login with admin name password.'
     return render_template('admin_login.html',message=message)
@@ -413,12 +469,12 @@ def admin_student(roll,id):
             result=cursor.fetchall()
 
 
-        return render_template('admin_student.html', roll=roll,result=result)
+        return render_template('admin_student.html', roll=roll,result=result,id=id)
 
     if session['username'] == id:
         cursor.execute('select * from student;')
         result = cursor.fetchall()
-        return render_template('admin_student.html', roll=roll, result=result)
+        return render_template('admin_student.html', roll=roll, result=result,id=id)
     else:
         return render_template('hacker.html')
 
@@ -442,7 +498,7 @@ def admin_college(cid,id):
                 cursor.execute('select * from college where cid=%s;', cid)
                 result = cursor.fetchall()
                 print(result)
-            return render_template('admin_college.html', cid=cid, result=result)
+            return render_template('admin_college.html', cid=cid, result=result,id=id)
         elif form_no==2:
             name=details['cname']
             password=details['password']
@@ -452,15 +508,35 @@ def admin_college(cid,id):
             print(name,password,loc,website,phone)
             cursor.execute('insert into college(cname,cpass,website,loc,phone) values(%s,%s,%s,%s,%s);',(name,password,website,loc,phone))
             conn.commit()
-            return redirect(url_for('admin_college',cid=cid))
+            return redirect(url_for('admin_college',cid=cid,id=id))
 
     if session['username'] == id:
         cursor.execute('select * from college;')
         result = cursor.fetchall()
         print('aaa')
-        return render_template('admin_college.html', cid=cid, result=result)
+        return render_template('admin_college.html', cid=cid, result=result,id=id)
     else:
         return render_template('hacker.html')
+
+########################################### college students list ##################################################
+
+
+
+@app.route('/admin_college_list/<cid>')
+def admin_college_list(cid):
+    cursor.execute("select * from student where cid=%s;", cid)
+    students = cursor.fetchall()
+    print(students)
+    return render_template('admin_college_list.html', cid=cid, students=students)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -472,28 +548,42 @@ def admin_college(cid,id):
 def admin_cetrank(id):
     if request.method=='POST':
         new_entry=request.form
-        roll=new_entry['roll']
-        name=new_entry['sname']
-        rank=new_entry['rank']
-        cursor.execute('select roll_no from cet_rank where roll_no=%s;',roll)
-        exists=cursor.fetchall()
-        if exists:
-            flash('The entry already exists',"danger")
-            return redirect(url_for('admin_cetrank'))
-        else:
-            cursor.execute('select roll_no from cet_rank where rank=%s;', rank)
+        form=new_entry['submit']
+        if form=="2":
+            roll = new_entry['roll']
+            name = new_entry['sname']
+            rank = new_entry['rank']
+            cursor.execute('select roll_no from cet_rank where roll_no=%s;', roll)
             exists = cursor.fetchall()
             if exists:
-                flash("A student with given rank already exists","danger")
-                return redirect(url_for('admin_cetrank'))
+                flash('The entry already exists', "danger")
+                return redirect(url_for('admin_cetrank', id=id))
             else:
-                cursor.execute("insert into cet_rank(roll_no,sname,rank) values(%s,%s,%s);", (roll, name, rank))
-                conn.commit()
-                return redirect(url_for('admin_cetrank'))
+                cursor.execute('select roll_no from cet_rank where rank=%s;', rank)
+                exists = cursor.fetchall()
+                if exists:
+                    flash("A student with given rank already exists", "danger")
+                    return redirect(url_for('admin_cetrank', id=id))
+                else:
+                    cursor.execute("insert into cet_rank(roll_no,sname,rank) values(%s,%s,%s);", (roll, name, rank))
+                    conn.commit()
+                    return redirect(url_for('admin_cetrank', id=id))
+        elif form=='1':
+            roll=new_entry['roll']
+            cursor.execute('select * from cet_rank where roll_no=%s;',roll)
+            data = cursor.fetchall()
+            if data:
+                return render_template('admin_cetrank.html', data=data, id=id)
+            else:
+                return "roll not found"
+
+
+
+
     if session['username'] == id:
         cursor.execute("select * from cet_rank;")
         data = cursor.fetchall()
-        return render_template('admin_cetrank.html', data=data)
+        return render_template('admin_cetrank.html', data=data,id=id)
 
     else:
         return render_template('hacker.html')
@@ -503,20 +593,20 @@ def admin_cetrank(id):
 
 ########################################### delete ##################################################
 
-@app.route('/delete/<what>/<id>')
-def delete(what,id):
+@app.route('/delete/<what>/<did>/<id>')
+def delete(what,did,id):
     if what=='student':
-        cursor.execute('delete from student where roll_no=%s;',id)
+        cursor.execute('delete from student where roll_no=%s;',did)
         conn.commit()
-        return redirect(url_for('admin_student',roll='all'))
+        return redirect(url_for('admin_student',roll='all',id=id))
     elif what=='college':
-        cursor.execute('delete from college where cid=%s;',id)
+        cursor.execute('delete from college where cid=%s;',did)
         conn.commit()
-        return redirect(url_for('admin_college', cid='all'))
+        return redirect(url_for('admin_college', cid='all',id=id))
     elif what=='rank':
-        cursor.execute('delete from cet_rank where roll_no=%s;',id)
+        cursor.execute('delete from cet_rank where roll_no=%s;',did)
         conn.commit()
-        return redirect(url_for('admin_cetrank'))
+        return redirect(url_for('admin_cetrank',id=id))
 
 ###########################################logout ##################################################
 

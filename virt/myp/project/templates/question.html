@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>adminforgot</title>
+</head>
+     <script>
+      function goBack() {
+        window.history.back();
+      }
+
+
+      </script>
+<body>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
+
+
+<form action="" method="POST">
+
+{% for i in que %}
+    {{ i }}
+    {% endfor %}
+    <br>
+    Enter the Answer : <input type="text" name="ans" maxlength="30" autofocus="autofocus"><br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
