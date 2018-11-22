@@ -6,6 +6,7 @@
      <link rel="stylesheet" href="/static/table.css">
      <link rel="stylesheet" href="/static/buttons.css">
      <link rel="stylesheet" href="/static/form.css">
+     <link rel="stylesheet" href="/static/flash.css">
 
 
 </head>
@@ -39,6 +40,20 @@
     <button type="submit">Search</button>
 </form>
 
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
+
+
 
 <div style="position: absolute; top: 0;right: 40px; ">
 
@@ -60,6 +75,7 @@
              <th>College id</th>
              <th>Branch</th>
              <th>Update</th>
+             <th>Deallocate</th>
              <th>Delete</th>
         </tr>
 
@@ -74,8 +90,9 @@
             <td>{{i[5]}}</td>
             <td>{{i[6]}}</td>
             <td>{{i[7]}}</td>
-            <td><a href="{{ url_for('student_update',roll=i[0]) }}"> <button >update</button> </a></td>
-            <td><a href="{{ url_for('delete',what='student',did=i[0],id=id) }}"> <button >delete</button> </a></td>
+            <td> <a href="{{ url_for('student_update',roll=i[0]) }}">             <button >update</button>     </a>  </td>
+            <td> <a href="{{ url_for('deallocate',roll=i[0],id=id)}}">            <button >Deallocate</button> </a>  </td>
+            <td> <a href="{{ url_for('delete',what='student',did=i[0],id=id) }}"> <button >delete</button>     </a>  </td>
         </tr>
 
      {%endfor%}

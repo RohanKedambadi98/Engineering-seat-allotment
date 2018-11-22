@@ -6,6 +6,7 @@
        Admin_login
     </title>
     <link rel="stylesheet" type="text/css" href="/static/adminlogin/style.css" />
+    <link rel="stylesheet" href="/static/flash.css">
 </head>
  <script>
       function goBack() {
@@ -32,6 +33,20 @@
 <form  method="POST" action="">
   <h1>Admin Log in</h1>
   <div class="inset">
+
+
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
 
        <p>
     {{message}}

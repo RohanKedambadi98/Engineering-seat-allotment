@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>admin_main</title>
         <link rel="stylesheet" href="/static/buttons.css">
+        <link rel="stylesheet" href="/static/flash.css">
 
 
 </head>
@@ -57,15 +58,17 @@
 
 
 <br>
-{% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
-      {% for message in messages %}
-   <p style="color:white;">   {{ message }}  </p>
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
       {% endfor %}
    {% endif %}
 {% endwith %}
 <br>
-
    <div style="position: absolute; top: 0;right: 40px; ">
 
     <a href="{{ url_for('logout') }}"> <button class="button button">log out</button> </a>

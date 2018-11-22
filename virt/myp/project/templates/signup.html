@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>sign up</title>
   <link rel="stylesheet" href="/static/studentlogin/styless.css">
+    <link rel="stylesheet" href="/static/flash.css">
     <script>
 function goBack() {
     window.history.back();
@@ -32,6 +33,20 @@ function goBack() {
    <h1 style=" color: white;"> the signup page</h1>
    <br>
    <br>
+       <br>
+
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
     <div class="container">
 
         <div  style="float:left; width: 50%;">

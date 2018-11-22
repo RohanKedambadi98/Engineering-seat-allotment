@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
     <title>MAIN_PaGE</title>
      <link rel="stylesheet" href="/static/main/main.css">
+     <link rel="stylesheet" href="/static/flash.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	 <script>
@@ -17,10 +18,14 @@
 	</style>
 </head>
 <body  bgcolor="#F2F5F7  ">
-{% with messages = get_flashed_messages() %}
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
-      {% for message in messages %}
-         {{ message }}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
       {% endfor %}
    {% endif %}
 {% endwith %}

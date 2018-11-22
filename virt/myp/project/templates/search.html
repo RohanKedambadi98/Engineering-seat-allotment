@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/buttons.css">
     <link rel="stylesheet" href="/static/form.css">
     <link rel="stylesheet" href="/static/dropdown.css">
+    <link rel="stylesheet" href="/static/flash.css">
 
  <script>
       function goBack() {
@@ -35,10 +36,14 @@
 <h1 align="center">College(s) Available</h1>
 
 
-{% with messages = get_flashed_messages() %}
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
-      {% for message in messages %}
-         {{ message }}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
       {% endfor %}
    {% endif %}
 {% endwith %}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>update</title>
         <link rel="stylesheet" href="/static/buttons.css">
+        <link rel="stylesheet" href="/static/flash.css">
 
 
 </head>
@@ -82,7 +83,18 @@ input[type=submit]:hover {
 </div>
 
 
-
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+     <div class="{{ category }}">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>{{category}}! </b>   {{message}}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br>
 
 
 <div align="center" class="form">
