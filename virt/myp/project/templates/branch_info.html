@@ -49,6 +49,8 @@ function closeForm() {
       ">
        &laquo;
      </button>
+<h1 align="center"> Branch information</h1>
+
 
 <div style="position: absolute; top: 0;right: 40px; ">
 
@@ -90,7 +92,7 @@ function closeForm() {
         <tr>
 
             <td ><input type="text" value="{{i[0] }}" name="dep"  ></td>
-            <td ><input type="number" value="{{i[1] }}" name="seats" min="0" ></td>
+            <td ><input type="number" value="{{i[1] }}" name="seats" min="0" max="240"></td>
             <td ><input type="number" value="{{i[2] }}" name="cut_off" min="0"></td>
              <td ><input type="number" value="{{i[3] }}" name="fees" min="0"></td>
              <td><button name="submit" value="1" type="submit">update</button></td>
@@ -113,13 +115,13 @@ function closeForm() {
     <input type="text" placeholder="Branch name" name="bname" maxlength="45" required>
 
     <label ><b>seats</b></label>
-    <input type="number" placeholder="no of seats" name="seats" required>
+    <input type="number" placeholder="no of seats" name="seats" min="0" max="240" required>
 
        <label ><b>cut off</b></label>
-    <input type="number" placeholder="cut off" name="cut_off" required>
+    <input type="number" placeholder="cut off" name="cut_off" min="0" required>
 
        <label ><b>fees</b></label>
-    <input type="number" placeholder="seats" name="fees" required>
+    <input type="number" placeholder="seats" name="fees" min="0" required>
 
     <button type="submit" name="submit" class="btn" value="2">Add</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>

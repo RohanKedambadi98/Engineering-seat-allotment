@@ -44,14 +44,12 @@ def is_logged_in(f):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-
     return render_template('Main.html')
 
 #######################################student login page #########################################
 
 @app.route('/slogin/', methods=['GET', 'POST'])
 def slogin():
-    #flash('You were logged out.')
     if request.method == 'POST':
         userdetails = request.form
         roll = userdetails['roll']
@@ -82,7 +80,7 @@ def slogin():
     message = 'login with your user name and password'
     return render_template('index.html',message=message)
 
-#######################################student signup page #########################################
+#######################################Student signup page #########################################
 
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
@@ -100,7 +98,15 @@ def signup():
         answer=str(signupdetails['answer'])
         #print(signupdetails)
         print(rollno,name,password,email,phno,email,rank,question,answer)
-
+        # roll_no check
+        print('kjdfcvf')
+        cursor.execute('select roll_no from student where roll_no=%s;', rollno)
+        exists = cursor.fetchone()
+        print(exists)
+        if exists:
+            flash('you are already signed in..! login with your username and password', 'Danger')
+            message = 'login with your user name and password'
+            return render_template('signup.html', message=message)
         cursor.execute("select roll_no,sname,rank from cet_rank where roll_no=%s;", rollno)
         data = cursor.fetchall()
         try:
@@ -111,6 +117,24 @@ def signup():
             print(drollno, dsname, drank)
             print(rollno, name, rank)
             if rollno == drollno and name == dsname and rank == drank:
+                #email check
+                cursor.execute('select roll_no from student where email=%s',email)
+                exists=cursor.fetchone()
+                print("email")
+                if exists:
+                    print("email1")
+                    flash('The email id is already in use..!','Danger')
+                    message = 'login with your user name and password'
+                    return render_template('signup.html',)
+                #phone no check
+                cursor.execute('select roll_no from student where phno=%s', phno)
+                exists = cursor.fetchone()
+                if exists:
+                    flash('The phone number is already in use..!', 'Danger')
+                    message = 'login with your user name and password'
+                    return render_template('signup.html', )
+
+
                 cursor.execute("insert into student(roll_no,sname,pass,email,phno,rank,question,answer) values(%s,%s,%s,%s,%s,%s,%s,%s);",
                                (rollno, name, password, email, phno, rank,question,answer))
                 conn.commit()
@@ -120,7 +144,8 @@ def signup():
                 return redirect(url_for('search_college', roll=rollno, branch='all', loc='all'))
 
         except:
-            message = 'invalid information'
+            flash('Invalid information..!','Danger')
+            message = 'login with your user name and password'
             return render_template('signup.html', message=message)
     message='login with your user name and password'
     return render_template('signup.html',message=message)
@@ -187,6 +212,20 @@ def student_update(roll):
         new_pass=update_details['password']
         new_email=update_details['email']
         new_phno=update_details['phno']
+        # email check
+        cursor.execute('select roll_no from student where email=%s and roll_no!=%s;',(new_email,roll))
+        exists = cursor.fetchone()
+        print("email")
+        if exists:
+            print("email1")
+            flash('The email id is already in use..!', 'Danger')
+            return redirect(url_for('student_update',roll=roll))
+        # phone no check
+        cursor.execute('select roll_no from student where phno=%s and roll_no!=%s;',(new_phno,roll))
+        exists = cursor.fetchone()
+        if exists:
+            flash('The phone number is already in use..!', 'Danger')
+            return redirect(url_for('student_update', roll=roll))
         cursor.execute('update student set email=%s where roll_no=%s;',(new_email,roll))
         conn.commit()
         cursor.execute('update student set pass=%s where roll_no=%s;', (new_pass, roll))
@@ -220,7 +259,7 @@ def my_college(roll):
 
         return render_template('my_college.html', cid=cid, college=college)
     except:
-        flash("You have not joined any college.")
+        flash("You have not joined any college.",'Danger')
 
         return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
@@ -235,7 +274,7 @@ def student_final(cid,bname,roll):
     new_roll = cursor.fetchone()
     if new_roll:
         new_roll = new_roll[0]
-        flash('You have already joined a college')
+        flash('You have already joined a college','Danger')
         return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
     else:
@@ -244,7 +283,7 @@ def student_final(cid,bname,roll):
         conn.commit()
         cursor.execute('update student set bname=%s where roll_no=%s;', (bname, roll))
         conn.commit()
-        flash(' college joining succesfull')
+        flash(' college joining succesfull','Success')
         return redirect(url_for('search_college', roll=roll, branch='all', loc='all'))
 
 
@@ -277,7 +316,7 @@ def question(id):
             flash(message)
             return redirect(url_for('slogin'))
         else:
-            flash("the answer in incorrect")
+            flash("the answer in incorrect",'Danger')
             return redirect(url_for('question',id=id))
 
 
@@ -289,7 +328,7 @@ def question(id):
         print("kelage")
         return render_template('question.html', que=que)
     else:
-        flash("the roll no does not exists")
+        flash("the roll no does not exists",'Danger')
         return render_template('rohan.html')
 
 
@@ -363,6 +402,12 @@ def college_info(cid):
 
         phone=update_details['phone']
         website=update_details['website']
+        # phone no check
+        cursor.execute('select cid from college where phone=%s and cid!=%s;',(phone,cid))
+        exists = cursor.fetchone()
+        if exists:
+            flash('The phone number is already in use..!', 'Danger')
+            return redirect(url_for('college_info',cid=cid))
         cursor.execute('update college set cpass=%s,website=%s,phone=%s where cid=%s',
                        (password,website,phone,cid))
 
@@ -534,6 +579,12 @@ def admin_college(cid,id):
             phone=details['phone']
             loc=details['loc']
             website=details['website']
+            # phone no check
+            cursor.execute('select cid from college where phone=%s;',phone)
+            exists = cursor.fetchone()
+            if exists:
+                flash('The phone number is already in use..!', 'Danger')
+                return redirect(url_for('admin_college', cid='all',id=id))
             print(name,password,phone,loc,website,phone)
             cursor.execute('insert into college(cname,cpass,website,loc,phone) values(%s,%s,%s,%s,%s);',(name,password,website,loc,phone))
             conn.commit()
@@ -586,7 +637,7 @@ def admin_cetrank(id):
                 else:
                     cursor.execute("insert into cet_rank(roll_no,sname,rank) values(%s,%s,%s);", (roll, name, rank))
                     conn.commit()
-                    flash('Record Insertion Successfull..!')
+                    flash('Record Insertion Successfull..!','Success')
                     return redirect(url_for('admin_cetrank', id=id))
         elif form=='1':
             roll=new_entry['roll']
@@ -631,5 +682,5 @@ def delete(what,did,id):
 @app.route('/logout')
 def logout():
     session.clear()
-    flash('you are now logged out')
+    flash('you are now logged out','Success')
     return render_template('Main.html')

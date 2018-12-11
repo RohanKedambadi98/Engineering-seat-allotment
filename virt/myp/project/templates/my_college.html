@@ -64,9 +64,19 @@ input[type=submit]:hover {
 
 
 <body>
-<h1 align="center">My college</h1>
 
-<br>
+<button onclick="goBack()" style="  background-color: Transparent;
+    color: blue;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 50px;
+      ">
+       &laquo;
+     </button>
+<h1 align="center">My college</h1>
 {% with messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
       {% for category, message in messages %}
@@ -83,8 +93,6 @@ input[type=submit]:hover {
 {%for i in college %}
 
 <div  class="form">
-
-
 
                 college id     :  {{i[0]}}
                 <br>
