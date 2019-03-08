@@ -6,4 +6,3 @@ python-flask.
 Mysql.
 
 run virt/myp/run.py to start
-
