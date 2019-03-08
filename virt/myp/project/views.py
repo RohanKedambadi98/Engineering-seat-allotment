@@ -105,7 +105,7 @@ def signup():
         print(exists)
         if exists:
             flash('you are already signed in..! login with your username and password', 'Danger')
-            message = 'login with your user name and password'
+            message = ''
             return render_template('signup.html', message=message)
         cursor.execute("select roll_no,sname,rank from cet_rank where roll_no=%s;", rollno)
         data = cursor.fetchall()
@@ -124,7 +124,7 @@ def signup():
                 if exists:
                     print("email1")
                     flash('The email id is already in use..!','Danger')
-                    message = 'login with your user name and password'
+                    message = ''
                     return render_template('signup.html',)
                 #phone no check
                 cursor.execute('select roll_no from student where phno=%s', phno)
@@ -145,9 +145,9 @@ def signup():
 
         except:
             flash('Invalid information..!','Danger')
-            message = 'login with your user name and password'
+            message = ''
             return render_template('signup.html', message=message)
-    message='login with your user name and password'
+    message=''
     return render_template('signup.html',message=message)
 
 
@@ -313,7 +313,7 @@ def question(id):
             passs = cursor.fetchone()
             passs = passs[0]
             message = "your password is: " + passs
-            flash(message)
+            flash(message,"Success")
             return redirect(url_for('slogin'))
         else:
             flash("the answer in incorrect",'Danger')
